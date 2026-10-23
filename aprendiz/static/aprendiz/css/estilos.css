@@ -1,0 +1,101 @@
+/* --- Estilos Generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* --- Encabezado --- */
+.encabezado {
+    background-color: #39A900; /* Verde institucional SENA */
+    color: #ffffff;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.encabezado h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* --- Contenedor Principal --- */
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* --- Sección de la Tabla --- */
+.tabla-seccion {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Asegura que los bordes redondeados afecten a la tabla */
+    overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+thead {
+    background-color: #00324d; /* Azul oscuro elegante para contraste */
+    color: #ffffff;
+}
+
+th {
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    color: #555555;
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* --- Efecto cebra y hover en las filas --- */
+tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+tbody tr:hover {
+    background-color: #f1f8e9; /* Un verde muy sutil al pasar el mouse */
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* --- Fila cuando no hay registros --- */
+tbody tr td[colspan="5"] {
+    text-align: center;
+    padding: 2.5rem;
+    color: #888888;
+    font-style: italic;
+}
+
+/* --- Responsividad para celulares --- */
+@media (max-width: 768px) {
+    .encabezado h1 {
+        font-size: 1.6rem;
+    }
+    
+    th, td {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+}
