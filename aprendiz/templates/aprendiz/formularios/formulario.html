@@ -1,0 +1,37 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ titulo }}</title>
+
+    <!-- Estilos del formulario -->
+    <link rel="stylesheet" href="{% static 'aprendiz/css/formulario.css' %}">
+</head>
+<body>
+
+    {% block contend %}
+
+    <h1>{{ titulo }}</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="mensaje">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    {% endblock %}
+
+</body>
+</html>

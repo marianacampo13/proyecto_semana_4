@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Aprendiz</title>
+    <link rel="stylesheet" href="{% static 'aprendiz/css/estilos.css' %}">
+</head>
+<body>
+    <header class="encabezado">
+        <h1>Eliminar Aprendiz</h1>
+    </header>
+
+    <main class="contenedor-principal" style="text-align: center; padding: 20px;">
+        <p>¿Estás seguro de que deseas eliminar al aprendiz:</p>
+        <h2>{{ aprendiz.nombre }} {{ aprendiz.apellido }} (Documento: {{ aprendiz.documento }})?</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" style="background-color: #d9534f; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Sí, eliminar</button>
+            <a href="{% url 'lista' %}">
+                <button type="button" style="padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Cancelar</button>
+            </a>
+        </form>
+    </main>
+</body>
+</html>

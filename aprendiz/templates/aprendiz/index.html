@@ -11,45 +11,60 @@
     <header class="encabezado">
         <h1>Listado de Aprendices SENA</h1>
     </header>
+
     <main class="contenedor-principal">
-        <section class="tabla-seccion">                                 
+        <section class="tabla-seccion">                        
+            
+            <!-- Botón para ir a registrar (fuera de la tabla o arriba de ella para mayor orden) -->
+            <div style="margin-bottom: 15px;">
+                <a href="{% url 'registrar_aprendiz' %}">
+                    <button type="button">Registrar nuevo aprendiz</button>
+                </a>
+            </div>
+
             <table>
-        <thead>
-            <tr>
-                <th>Nombre Completo</th>
-                <th>Documento</th>
-                <th>Teléfono</th>
-                <th>Correo Electrónico</th>
-                <th>Programa de Formación y Ficha</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for aprendiz in aprendices %}
-            <tr>
-                <td>{{ aprendiz.nombre }} {{ aprendiz.apellido }}</td>
-                <td>{{ aprendiz.documento }}</td>
-                <td>{{ aprendiz.telefono }}</td>
-                <td>{{ aprendiz.correo }}</td>
-                <td>
-                    {% if aprendiz.programa %}
-                        {{ aprendiz.programa.nombre }} - Ficha: {{ aprendiz.programa.ficha }}
-                    {% else %}
-                        Sin programa asignado
-                    {% endif %}
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5">No hay aprendices registrados actualmente.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Documento</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electrónico</th>
+                        <th>Programa de Formación y Ficha</th>
+                        <th>Acciones</th> <!-- NUEVA COLUMNA PARA EDITAR -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aprendiz in aprendices %}
+                    <tr>
+                        <td>{{ aprendiz.nombre }} {{ aprendiz.apellido }}</td>
+                        <td>{{ aprendiz.documento }}</td>
+                        <td>{{ aprendiz.telefono }}</td>
+                        <td>{{ aprendiz.correo }}</td>
+                        <td>
+                            {% if aprendiz.programa %}
+                                {{ aprendiz.programa.nombre }} - Ficha: {{ aprendiz.programa.ficha }}
+                            {% else %}
+                                Sin programa asignado
+                            {% endif %}
+                        </td> 
+                        
+                        <!-- NUEVA CELDA CON EL BOTÓN DE EDITAR -->
+                        <td>
+                            <a href="{% url 'editar_aprendiz' aprendiz.documento %}">
+                                <button type="button">Editar</button>
+                            </a>
+                            <a href="{% url 'eliminar_aprendiz' aprendiz.documento %}"><button type="button" style="background-color: #d9534f; color: white;">Eliminar</button></a>
+                        </td>
+
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">No hay aprendices registrados actualmente.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
-        
     </main>
-    
-
-
 </body>
 </html>
